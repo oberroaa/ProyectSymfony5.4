@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User index{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>User index <span class="label label-default">{{ pagination.getTotalItemCount }}</span></h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <a class="btn btn-default" href="{{ path('user_index') }}"> TODOS </a>
+                    <a class="btn btn-default" href="{{ path('user_new') }}"> NUEVO </a>
+                </div>
+                <div align="right" class="col-md-6 col-sm-6 ">
+                    {{ knp_pagination_filter(pagination, {
+                        'a.id':'id' ,'a.username':'username', 'a.roles':'roles', 'a.email': 'email',
+                        'a.apiToken': 'apiToken','a.dateRegistered': 'dateRegistered','a.isVerified': 'isVerified'
+                    }) }}
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>{{ knp_pagination_sortable(pagination, 'Id', 'a.id') }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Username', 'a.username') }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Roles', 'a.roles') }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'Email', 'a.email') }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'ApiToken', 'a.apiToken') }}</th>
+                            <th>{{ knp_pagination_sortable(pagination, 'DateRegistered', 'a.dateRegistered') }}</th>
+                            <th width="10px">{{ knp_pagination_sortable(pagination, 'Active', 'a.isVerified') }}</th>
+                            <th width="10px">Picture</th>
+                            <th width="10px">actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for user in pagination %}
+                            <tr>
+                                <td>{{ user.id }}</td>
+                                <td>{{ user.username }}</td>
+                                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                                <td>{{ user.email }}</td>
+                                <td>{{ user.apiToken }}</td>
+                                <td>{{ user.dateRegistered ? user.dateRegistered|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ user.isVerified ? 'SI' : 'NO' }}</td>
+                                <td>
+                                    <img width="50" src="{{ asset('uploads/perfil/'~user.picture) }}" alt="" />
+                                </td>
+                                <td>
+                                    <a class="btn btn-info btn-xs" href="{{ path('user_edit', {'id': user.id}) }}"><i class="fa fa-edit"></i> Edit </a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="10">no records found</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+
+{% endblock %}

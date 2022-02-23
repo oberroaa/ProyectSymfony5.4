@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html> <!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+    <title>Proyecto</title>
+    <meta name="keywords" content="HTML5,CSS3,Template" />
+    <meta name="description" content="" />
+    <meta name="Author" content="Otoniel [oberroaa@gmail.com]" />
+
+    <!-- mobile settings -->
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <!-- WEB FONTS : use %7C instead of | (pipe) -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400%7CRaleway:300,400,500,600,700%7CLato:300,400,400italic,600,700" rel="stylesheet" type="text/css" />
+    <!-- CORE CSS -->
+    <link href="{{ asset("HTML/assets/plugins/bootstrap/css/bootstrap.min.css") }}" rel="stylesheet" type="text/css" />
+    <!-- THEME CSS -->
+    <link href="{{ asset("HTML/assets/css/essentials.css") }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset("HTML/assets/css/layout.css") }}" rel="stylesheet" type="text/css" />
+
+    <!-- PAGE LEVEL SCRIPTS -->
+    <link href="{{ asset("HTML/assets/css/header-1.css") }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset("HTML/assets/css/color_scheme/green.css") }}" rel="stylesheet" type="text/css" id="color_scheme" />
+
+    <style>
+        .table a{
+            color: white !important;
+        }
+        .table thead tr{
+            background-color: #0F9E5E !important;
+        }
+        .table thead tr th{
+            color: white; !important;
+        }
+        .link_a{
+            color: black !important;
+        }
+    </style>
+</head>
+
+
+<body class="smoothscroll enable-animation"  style="background-color: snow">
+<!-- wrapper -->
+<div id="wrapper">
+    <div id="header" class="transparent clearfix header-sm">
+        <!-- TOP NAV -->
+        <header id="topNav"  style="background-color: #0F9E5E;">
+            <div class="container">
+
+                <!-- Logo -->
+                <a class="logo pull-left" href="{{ path('home') }}">
+                    <img src="{{ asset('HTML/assets/images/logo_light.png') }}" alt="" />
+                </a>
+
+                <div class="navbar-collapse pull-right nav-main-collapse collapse">
+                    <nav class="nav-main">
+                        <ul id="topMain" class="nav nav-pills nav-main">
+                            <li class="active"><!-- HOME -->
+                                <a href="#">
+                                    HOME
+                                </a>
+                            </li>
+
+                            <li class="dropdown"><!-- SHOP -->
+                                <a class="dropdown-toggle" href="#">
+                                    ADMIN
+                                </a>
+                                <ul class="dropdown-menu pull-right">
+                                    <li class="dropdown">
+                                        <a class="dropdown-toggle" href="#">
+                                           USER
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="{{ path('user_index') }}">Listado</a></li>
+                                            <li><a href="{{ path('user_new') }}">Nuevo</a></li>                                            
+                                        </ul>
+                                    </li>                                  
+                                    <li><a href="{{ path('app.swagger_ui') }}">APIS DOC</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown"><!-- SHOP -->
+                                <a class="dropdown-toggle" href="#">
+                                    {% if app.user %}
+                                        {{ app.user }}
+                                    {% else %}
+                                        ENTRAR
+                                    {% endif %}
+                                </a>
+                                <ul class="dropdown-menu pull-right">
+                                    <li class="dropdown">
+                                        {% if app.user %}
+                                            <a class="link_a" href="{{ path('app_logout') }}">SALIR</a>
+                                        {% else %}
+                                            <a class="link_a" href="{{ path("login") }}">Autenticarme</a>
+                                        {% endif %}
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+
+                    </nav>
+                </div>
+
+            </div>
+        </header>
+        <!-- /Top Nav -->
+    </div>
+
+        <div class="container-fluid">
+    {% block body %}
+    {% endblock %}
+        </div>
+
+    <!-- FOOTER -->
+    <footer id="footer" class="footer-fixed ">
+        <div class="container nomargin-bottom nopadding clearfix text-center size-12">
+
+            <!-- Social Icons -->
+            <div class="clearfix pull-left mobile-block text-center">
+
+                <a href="#" class="social-icon social-icon-sm social-icon-border social-facebook pull-left" data-toggle="tooltip" data-placement="top" title="Facebook">
+                    <i class="icon-facebook"></i>
+                    <i class="icon-facebook"></i>
+                </a>
+
+                <a href="#" class="social-icon social-icon-sm social-icon-border social-twitter pull-left" data-toggle="tooltip" data-placement="top" title="Twitter">
+                    <i class="icon-twitter"></i>
+                    <i class="icon-twitter"></i>
+                </a>
+
+                <a href="#" class="social-icon social-icon-sm social-icon-border social-gplus pull-left" data-toggle="tooltip" data-placement="top" title="Google plus">
+                    <i class="icon-gplus"></i>
+                    <i class="icon-gplus"></i>
+                </a>
+
+                <a href="#" class="social-icon social-icon-sm social-icon-border social-linkedin pull-left" data-toggle="tooltip" data-placement="top" title="Linkedin">
+                    <i class="icon-linkedin"></i>
+                    <i class="icon-linkedin"></i>
+                </a>
+
+                <span class="pull-left footer-links hidden-xs">
+							<span>(+800) 123 456 78</span>
+							<a href="#">Contact</a>
+						</span>
+            </div>
+            <!-- /Social Icons -->
+
+            <img class="pull-right hidden-xs nomargin-bottom nomargin-left" src="{{ asset('HTML/assets/images/cc/payments.png') }}" width="359" height="28" alt="" />
+
+            <span class="hidden-xs size-13 line-height-30" style="line-height:30px !important">
+						&copy;Copyright 2022 Smarty LTD. All Rights Reserved.
+					</span>
+
+
+        </div>
+    </footer>
+    <!-- /FOOTER -->
+</div>
+<!-- /wrapper -->
+
+<!-- SCROLL TO TOP -->
+<a href="#" id="toTop"></a>
+
+
+<!-- PRELOADER -->
+<div id="preloader">
+    <div class="inner">
+        <span class="loader"></span>
+    </div>
+</div><!-- /PRELOADER -->
+
+
+<!-- JAVASCRIPT FILES -->
+<script type="text/javascript">var plugin_path = '{{ asset("HTML/assets/plugins/") }}';</script>
+<script type="text/javascript" src="{{ asset("HTML/assets/plugins/jquery/jquery-2.1.4.min.js") }}"></script>
+
+<script type="text/javascript" src="{{ asset("HTML/assets/js/scripts.js") }}"></script>
+<!--
+<script type="text/javascript" src="{{ asset("HTML/assets/plugins/bootstrap/js/bootstrap.min.js") }}"></script>
+-->
+<script type="text/javascript" src="{{ asset("HTML/assets/plugins/smoothscroll.js") }}"></script>
+</body>
+</html>

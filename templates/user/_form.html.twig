@@ -1,0 +1,57 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        {{ form_start(form,  {'attr': {'class': 'validate2', 'enctype':'multipart/form-data'}} ) }}
+        <fieldset>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-3 col-sm-3">
+                        <label>Username *</label>
+                        {{ form_widget(form['username']) }}
+                    </div>
+                    <div class="col-md-3 col-sm-3">
+                        <label>Email *</label>
+                        {{ form_widget(form['email']) }}
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <label>Picture *</label>
+                        {{ form_widget(form['picture']) }}
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-3 col-sm-3">
+                        <label>Roles: *</label>
+                        {{ form_widget(form['roles']) }}
+                    </div>
+                    <div class="col-md-1 col-sm-1">
+                        <label>Activo *</label>
+                        {{ form_widget(form['isVerified']) }}
+                    </div>
+
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-2">
+                    <a class="btn btn-3d btn-aqua btn-block margin-top-30" href="{{ path('user_index') }}">VOLVER</a>
+
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-3d btn-success btn-block margin-top-30">
+                        GUARDAR
+                    </button>
+                </div>
+
+
+            </div>
+        </fieldset>
+        {{ form_rest(form) }}
+        {{ form_end(form) }}
+
+    </div>
+
+</div>
+
+

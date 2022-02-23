@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit User{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>User Edit <span class="label label-default">{{ user.id }}</span></h2>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    {{ include('user/_form.html.twig') }}
+                </div>
+                <div class="col-md-2">
+                    {{ include('user/_delete_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

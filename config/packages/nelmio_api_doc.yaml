@@ -1,0 +1,33 @@
+#nelmio_api_doc:
+# documentation:
+#  info:
+#       title: Space Heroes
+#       description: Documentacion Apis
+#       version: 1.0.0
+#  areas: # to filter documented areas
+#     path_patterns:
+#        - ^/api(?!/doc$) # Accepts routes under /api except /api/doc
+nelmio_api_doc:
+    documentation:
+        servers:
+        - url: http://localhost:8000
+          description: API HTTPS
+        info:
+            title: Name App
+            description: Documentacion Apis
+            version: 1.0.0
+        components:
+            securitySchemes:
+                Bearer:
+                    type: http
+                    scheme: bearer
+                    bearerFormat: JWT
+        security:
+        - Bearer: []
+    areas:
+        default:
+            path_patterns:
+            - ^/api(?!/otra$) # Accepts routes under /api except /api/doc
+        unity:
+            path_patterns:
+            - ^/api/otra
